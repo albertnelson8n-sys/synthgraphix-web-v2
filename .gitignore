@@ -1,0 +1,32 @@
+# Node
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist
+build
+client/dist
+client/build
+server/dist
+
+# Env / secrets
+.env
+server/.env
+
+# Databases
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+
+# Backups
+_backup_*
+client/_backup_*
+server/_backup_*
+*.bak*
+
+# OS
+.DS_Store
+Thumbs.db

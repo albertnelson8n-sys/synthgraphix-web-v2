@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+
+:root {
+  /* Classic "Midnight + Gold" theme (no multicolor toggle) */
+  --bg0: #070b14;
+  --bg1: #0b1220;
+  --bg2: #0f1a2e;
+  --glass: rgba(255,255,255,0.06);
+  --glass2: rgba(255,255,255,0.10);
+  --stroke: rgba(255,255,255,0.12);
+  --muted: rgba(235,240,255,0.72);
+  --muted2: rgba(235,240,255,0.56);
+
+  --accent: #d4af37;   /* champagne gold */
+  --accent2: #f1d88a;  /* highlight */
+  --accent3: #b9892e;  /* deep gold */
+  --accentGrad: linear-gradient(90deg, var(--accent2), var(--accent), var(--accent3));
+
+  --danger: #fb7185;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color: rgba(244,248,255,0.92);
+  background:
+    radial-gradient(1200px 800px at 18% 10%, rgba(212,175,55,0.16), transparent 60%),
+    radial-gradient(1100px 750px at 82% 18%, rgba(241,216,138,0.10), transparent 62%),
+    radial-gradient(1200px 900px at 50% 95%, rgba(255,255,255,0.07), transparent 66%),
+    linear-gradient(180deg, var(--bg2), var(--bg1)),
+    var(--bg0);
+}
+
+/* Scrollbars */
+*::-webkit-scrollbar { height: 10px; width: 10px; }
+*::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 999px; }
+*::-webkit-scrollbar-track { background: rgba(0,0,0,0.25); }
+
+/* Glass primitives */
+.sg-panel { background: var(--glass); border: 1px solid var(--stroke); }
+.sg-panel-strong { background: var(--glass2); border: 1px solid var(--stroke); }
+.sg-muted { color: var(--muted); }
+.sg-muted2 { color: var(--muted2); }
+.sg-shadow-3d { box-shadow: 0 28px 110px rgba(0,0,0,0.62); }
+
+/* Primary buttons */
+.sg-prism-button {
+  background: var(--accentGrad);
+  color: rgba(0,0,0,0.92);
+  box-shadow:
+    0 18px 60px rgba(0,0,0,0.40),
+    0 0 22px color-mix(in srgb, var(--accent) 38%, transparent),
+    0 0 38px color-mix(in srgb, var(--accent2) 30%, transparent);
+}
+
+/* Volumetric "3D" type (CSS bevel + depth + gloss) */
+.sg-3d-title {
+  position: relative;
+  display: inline-block;
+  transform: translateZ(0);
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  font-weight: 900;
+  -webkit-text-stroke: 1px rgba(0,0,0,0.35);
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), var(--accent2) 24%, var(--accent) 55%, var(--accent3) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 18px 55px rgba(0,0,0,0.60));
+}
+.sg-3d-title::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(2px, 5px);
+  color: rgba(0,0,0,0.88);
+  -webkit-text-stroke: 1px rgba(0,0,0,0.88);
+  z-index: -1;
+  filter: blur(0.3px);
+}
+.sg-3d-title::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-1px, -1px);
+  color: rgba(255,255,255,0.20);
+  -webkit-text-stroke: 1px rgba(255,255,255,0.12);
+  mix-blend-mode: screen;
+  mask-image: linear-gradient(135deg, rgba(0,0,0,0.0), rgba(0,0,0,1) 34%, rgba(0,0,0,0.0) 76%);
+  opacity: 0.95;
+}
+
+/* Hyper-prism line/stroke */
+.sg-prism-stroke {
+  border-color: color-mix(in srgb, var(--accent) 42%, rgba(255,255,255,0.12));
+}
+
+/* Animated shimmer */
+@keyframes sgShimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.sg-shimmer {
+  background-size: 220% 220%;
+  animation: sgShimmer 8s linear infinite;
+}
+
+/* Parallax layer helper */
+.sg-parallax-layer {
+  will-change: transform;
+}
