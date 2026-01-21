@@ -185,7 +185,8 @@ function HeroCarousel({ slides }: { slides: Slide[] }) {
   }, []);
 
   return (
-    <div>
+    <div className="sg-aurora-page">
+      <AuroraBackdrop />
       <div className="flex items-center justify-between">
         <div className="text-xs tracking-[0.32em] uppercase text-white/70">Featured Highlights</div>
         <div className="flex gap-2">
@@ -224,7 +225,7 @@ function HeroCarousel({ slides }: { slides: Slide[] }) {
                 {slides[idx].tag}
               </div>
 
-              <PrismText as="div" className="mt-4 text-[28px] sm:text-[40px] lg:text-[46px] font-black leading-[1.02]">
+              <PrismText as="div" className="mt-4 text-[28px] sm:text-[40px] lg:text-[46px] font-black leading-[1.02] h3d h3d-steel">
                 {slides[idx].title}
               </PrismText>
               <div className="mt-3 text-white/75 max-w-[62ch]">{slides[idx].subtitle}</div>
@@ -243,10 +244,10 @@ function HeroCarousel({ slides }: { slides: Slide[] }) {
 
               <div className="mt-5 flex flex-wrap gap-3">
                 <Link to="/register" className="inline-block">
-                  <PrismButton className="px-6 py-3 w-auto">Create Account</PrismButton>
+                  <PrismButton className="px-6 py-3 w-auto !text-white font-bold">Create Account</PrismButton>
                 </Link>
                 <Link to="/login" className="inline-block">
-                  <SoftButton className="px-6 py-3">Sign In</SoftButton>
+                  <SoftButton className="px-6 py-3 !text-white font-bold">Sign In</SoftButton>
                 </Link>
               </div>
             </div>
@@ -294,7 +295,7 @@ function HeroCarousel({ slides }: { slides: Slide[] }) {
                 />
 
                 <div
-                  className="absolute left-10 bottom-10 right-10 h-[90px] rounded-[22px] border border-white/10 bg-white/5"
+                  className="absolute left-10 bottom-10 right-10 h-[90px] rounded-[22px] bg-[#0b1220]/85 border border-white/15 shadow-[0_18px_55px_rgba(0,0,0,.45)] backdrop-blur"
                   style={{ transform: "translateZ(44px)" }}
                 >
                   <div className="p-4">
@@ -311,6 +312,32 @@ function HeroCarousel({ slides }: { slides: Slide[] }) {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function AuroraBackdrop() {
+  return (
+    <div className="sg-aurora-backdrop" aria-hidden="true">
+      <div className="sg-stars" />
+      <div className="sg-aurora">
+        <div className="sg-aurora-layer sg-aurora-a" />
+        <div className="sg-aurora-layer sg-aurora-b" />
+        <div className="sg-aurora-layer sg-aurora-c" />
+      </div>
+
+      <svg className="sg-landscape" viewBox="0 0 1200 260" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="sgSil" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="rgba(0,0,0,0.55)" />
+            <stop offset="1" stopColor="rgba(0,0,0,0.92)" />
+          </linearGradient>
+        </defs>
+        <path d="M0,210 L90,160 L170,178 L260,138 L340,168 L430,118 L520,156 L610,120 L700,150 L790,110 L880,150 L990,120 L1110,160 L1200,130 L1200,260 L0,260 Z" fill="url(#sgSil)" />
+        <path d="M0,230 L120,190 L220,205 L330,180 L450,205 L570,175 L700,210 L820,180 L960,215 L1100,190 L1200,210 L1200,260 L0,260 Z" fill="rgba(0,0,0,0.88)" />
+      </svg>
+
+      <div className="sg-bottom-fog" />
     </div>
   );
 }
@@ -418,10 +445,10 @@ export default function Landing() {
             </div>
             <div className="flex items-center gap-2">
               <Link to="/login">
-                <SoftButton className="px-5 py-2">Sign In</SoftButton>
+                <SoftButton className="px-5 py-2 !text-white font-bold">Sign In</SoftButton>
               </Link>
               <Link to="/register">
-                <PrismButton className="px-5 py-2 w-auto">Get Started</PrismButton>
+                <PrismButton className="px-5 py-2 w-auto !text-white font-bold">Get Started</PrismButton>
               </Link>
             </div>
           </div>
@@ -437,7 +464,7 @@ export default function Landing() {
               High-fidelity 3D UI, parallax layers, live task economy
             </div>
 
-            <PrismText as="h1" className="mt-4 text-[44px] sm:text-[56px] lg:text-[64px] font-black leading-[0.98]">
+            <PrismText as="h1" className="mt-4 text-[44px] sm:text-[56px] lg:text-[64px] font-black leading-[0.98] h3d h3d-neon">
               Build revenue through tasks in a prism-lit control room.
             </PrismText>
 
@@ -448,18 +475,18 @@ export default function Landing() {
 
             <div className="mt-6 flex flex-wrap gap-3">
               <Link to="/register" className="inline-block">
-                <PrismButton className="px-6 py-3 w-auto">Create Your Workspace</PrismButton>
+                <PrismButton className="px-6 py-3 w-auto !text-white font-bold">Create Your Workspace</PrismButton>
               </Link>
               <Link to="/login" className="inline-block">
-                <SoftButton className="px-6 py-3">Open Console</SoftButton>
+                <SoftButton className="px-6 py-3 !text-white font-bold">Open Console</SoftButton>
               </Link>
             </div>
 
             <div className="mt-8 grid grid-cols-2 gap-4">
               {["Max 10 tasks/day", "Surveys + micro-work", "3D dashboard UX", "Activation-gated withdrawals"].map((t) => (
-                <div key={t} className="rounded-2xl bg-white/5 border border-white/10 px-4 py-3">
-                  <div className="text-xs uppercase tracking-[0.26em] text-white/60">Capability</div>
-                  <div className="mt-1 text-white/85 font-semibold">{t}</div>
+                <div key={t} className="rounded-2xl bg-[#0b1220]/85 border border-white/15 shadow-[0_18px_55px_rgba(0,0,0,.45)] backdrop-blur px-4 py-3">
+                  <div className="text-xs uppercase tracking-[0.26em] text-white/75 font-bold">Capability</div>
+                  <div className="mt-1 text-white font-bold">{t}</div>
                 </div>
               ))}
             </div>
@@ -500,7 +527,7 @@ export default function Landing() {
           <div className="flex items-end justify-between gap-4 flex-wrap">
             <div>
               <div className="text-xs tracking-[0.32em] uppercase text-white/65">Workflow</div>
-              <PrismText as="h2" className="mt-2 text-[34px] sm:text-[42px] font-black">
+              <PrismText as="h2" className="mt-2 text-[34px] sm:text-[42px] font-black h3d h3d-gold">
                 A complete path from tasks to payouts.
               </PrismText>
             </div>
@@ -514,12 +541,12 @@ export default function Landing() {
               {
                 step: "01",
                 title: "Complete Tasks",
-                desc: "Receive up to five tasks per day. Earn KES per completion, tracked in history.",
+                desc: "Receive up to 10 tasks per day. Earn KES per completion, tracked in history.",
               },
               {
                 step: "02",
                 title: "Unlock Withdrawals",
-                desc: "After earning at least KES 100, pay a one-time KES 100 activation from your balance.",
+                desc: "After earning at least KES 100, pay a one-time KES 100 activation externally via Pesapal to unlock withdrawals.",
               },
               {
                 step: "03",
@@ -527,7 +554,7 @@ export default function Landing() {
                 desc: "Submit withdrawal requests to mobile money and track status updates in your console.",
               },
             ].map((s) => (
-              <div key={s.step} className="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <div key={s.step} className="sg-panel rounded-3xl p-6 bg-[#0b1220]/85 border border-white/15 shadow-[0_18px_55px_rgba(0,0,0,.45)] backdrop-blur">
                 <div className="flex items-center gap-3">
                   <div className="rounded-2xl px-3 py-1 bg-white/10 border border-white/10 text-xs tracking-[0.28em] uppercase">{s.step}</div>
                   <div className="h-px flex-1 bg-white/10" />
@@ -544,7 +571,7 @@ export default function Landing() {
         {/* use cases */}
         <div className="mt-16">
           <div className="text-xs tracking-[0.32em] uppercase text-white/65">Use Cases</div>
-          <PrismText as="h2" className="mt-2 text-[34px] sm:text-[42px] font-black">
+          <PrismText as="h2" className="mt-2 text-[34px] sm:text-[42px] font-black h3d h3d-steel">
             Built for modern micro-work & ops.
           </PrismText>
 
@@ -557,7 +584,7 @@ export default function Landing() {
               ["Operations", "Document checks, lead enrichment, and pricing audits."],
               ["Support", "Customer chat, email triage, and knowledge base tasks."],
             ].map(([t, d]) => (
-              <div key={t} className="sg-panel rounded-3xl p-6">
+              <div key={t} className="sg-panel rounded-3xl p-6 bg-[#0b1220]/85 border border-white/15 shadow-[0_18px_55px_rgba(0,0,0,.45)] backdrop-blur">
                 <PrismText as="div" className="text-xl font-black">
                   {t}
                 </PrismText>
@@ -572,7 +599,7 @@ export default function Landing() {
           <div className="mt-16 flex items-end justify-between gap-4 flex-wrap">
             <div>
               <div className="text-xs tracking-[0.32em] uppercase text-white/65">Pricing</div>
-              <PrismText as="h2" className="mt-2 text-[34px] sm:text-[42px] font-black">
+              <PrismText as="h2" className="mt-2 text-[34px] sm:text-[42px] font-black h3d h3d-neon">
                 Simple tiers, clear payout rules.
               </PrismText>
             </div>
@@ -584,10 +611,7 @@ export default function Landing() {
               <div
                 key={t.name}
                 className={
-                  "rounded-3xl border p-6 " +
-                  (t.highlight
-                    ? "border-white/20 bg-white/10 shadow-[0_25px_90px_rgba(0,0,0,0.55)]"
-                    : "border-white/10 bg-white/5")
+                  "rounded-3xl p-6 bg-[#0b1220]/85 border shadow-[0_18px_55px_rgba(0,0,0,.45)] backdrop-blur " + (t.highlight ? "border-[rgba(241,210,138,0.55)] bg-[rgba(241,210,138,0.10)] shadow-[0_25px_90px_rgba(0,0,0,0.55)]" : "border-white/15")
                 }
               >
                 <div className="flex items-start justify-between gap-3">
@@ -618,11 +642,11 @@ export default function Landing() {
                 <div className="mt-6">
                   {t.highlight ? (
                     <Link to="/register">
-                      <PrismButton className="py-3">Start Growth</PrismButton>
+                      <PrismButton className="py-3 !text-white font-bold">Start Growth</PrismButton>
                     </Link>
                   ) : (
                     <Link to="/register">
-                      <Button className="py-3">Create Account</Button>
+                      <Button className="py-3 !text-white font-bold">Create Account</Button>
                     </Link>
                   )}
                 </div>
@@ -634,14 +658,14 @@ export default function Landing() {
         {/* faq */}
         <div className="mt-16">
           <div className="text-xs tracking-[0.32em] uppercase text-white/65">FAQ</div>
-          <PrismText as="h2" className="mt-2 text-[34px] sm:text-[42px] font-black">
+          <PrismText as="h2" className="mt-2 text-[34px] sm:text-[42px] font-black h3d h3d-gold">
             Answers, upfront.
           </PrismText>
 
           <div className="mt-7 grid grid-cols-1 lg:grid-cols-2 gap-4">
             {faqs.map((f) => (
-              <div key={f.q} className="rounded-3xl border border-white/10 bg-white/5 p-6">
-                <div className="text-white font-semibold">{f.q}</div>
+              <div key={f.q} className="sg-panel rounded-3xl p-6 bg-[#0b1220]/85 border border-white/15 shadow-[0_18px_55px_rgba(0,0,0,.45)] backdrop-blur">
+                <div className="text-white font-bold">{f.q}</div>
                 <div className="mt-2 text-white/70">{f.a}</div>
               </div>
             ))}
